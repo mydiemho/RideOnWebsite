@@ -71,8 +71,9 @@
     // Get the geocodes from Flask
     var best_lat = {{ best_lat }};
     var best_lon = {{ best_lon }};
+    var taxi_coords = {{ coords | safe }};
 
-    var map = L.map('map').setView([best_lat, best_lon], 12);
+    var map = L.map('map').setView([best_lat, best_lon], 15).fitBounds(taxi_coords);
 
     // Website with examples: https://leaflet-extras.github.io/leaflet-providers/preview/
     //L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -115,12 +116,11 @@
     // }
 
     // Add all photos of the tag
-    var tag_points = {{ coords | safe }};
-    var tag_points_length = tag_points.length;
-    for (var i = 0; i < tag_points_length; i++) {
+    var taxi_coords_length = taxi_coords.length;
+    for (var i = 0; i < taxi_coords_length; i++) {
         var circle = L.circle(
-            tag_points[i],
-            5,
+            taxi_coords[i],
+            10,
             {
                 color: 'blue',
                 //fillColor: '#f03',

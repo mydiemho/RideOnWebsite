@@ -12,8 +12,8 @@ from pyelasticsearch import ElasticSearch
 def hello():
     return "Hello World"
 
-@app.route("/es_test/<lat>/<lon>/")
-def es_test(lat, lon):
+@app.route("/es_test/<user_lat>/<user_lon>/")
+def es_test(user_lat, user_lon):
     ELASTIC_SEARCH_CLUSTER = [
     "http://52.8.145.247:9200/", "http://52.8.148.251:9200/", "http://52.8.158.130:9200/", "http://52.8.162.105:9200/",
     "http://52.8.153.92:9200/"]
@@ -21,8 +21,8 @@ def es_test(lat, lon):
     es_client = ElasticSearch(urls=ELASTIC_SEARCH_CLUSTER)
 
     location = {
-        "lat": lat,
-        "lon": lon
+        "lat": user_lat,
+        "lon": user_lon
     }
 
     # construct query to find closest taxi
@@ -62,8 +62,8 @@ def es_test(lat, lon):
 
         # Render the page;
     return render_template("output.html",
-            best_lon = lon,
-            best_lat = lat,
+            best_lon = user_lon,
+            best_lat = user_lat,
             coords = json.dumps(list(coords))
             )
 
