@@ -1,1 +1,4 @@
-$('body').scrollspy({ target: '#rideOn' })
+$('#myTabs a').find('a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
