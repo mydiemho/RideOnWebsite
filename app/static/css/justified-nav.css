@@ -1,6 +1,8 @@
-body {
+body, html {
     padding-top: 20px;
     position: relative;
+    overflow: auto;
+    height: 100%;
 }
 
 .footer {
@@ -14,46 +16,36 @@ body {
 .jumbotron {
     text-align: center;
     background-color: transparent;
-}
-
-.jumbotron .btn {
-    padding: 14px 24px;
-    font-size: 21px;
+    padding-bottom: 5px;
 }
 
 /* map */
 #map-container {
     height: 560px;
     width: 940px;
-    padding-top: 10px;
 }
 
 #map-canvas {
     height: 500px;
     width: 940px;
-    padding-top: 40px;
 }
-
 
 /* Kafka */
 #kafka-canvas {
-    height: 560px;
-    width: 940px;
-    padding-top: 10px;
+    width: 100%;
+    height: 900px;
 }
 
 /* Storm */
 #storm-canvas {
-    height: 560px;
-    width: 940px;
-    padding-top: 10px;
+    width: 100%;
+    height: 900px;
 }
 
 /* Grafana */
 #grafana-canvas {
-    height: 560px;
-    width: 940px;
-    padding-top: 10px;
+    width: 100%;
+    height: 900px;
 }
 
 /* Customize the nav-justified links to be fill the entire space of the .navbar */

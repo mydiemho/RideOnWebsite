@@ -1,4 +1,3 @@
-$('#myTabs a').find('a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
+$(document).ready(function(){
+    $('#tab').height($(window).height());
+});
