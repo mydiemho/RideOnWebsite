@@ -45,8 +45,11 @@
         <nav>
             <!-- NAV TABS -->
             <ul id='myTabs' class="nav nav-justified" role="tablist">
-                <li role="presentation" class="active"><a href="#map-section" aria-controls="map-section" role="tab"
+                <li role="presentation" class="active"><a href="#slide-section" aria-controls=slide-section" role="tab"
                                                           data-toggle="tab">Home</a>
+                </li>
+                <li role="presentation"><a href="#map-section" aria-controls="map-section" role="tab"
+                                           data-toggle="tab">Map</a>
                 </li>
                 <li role="presentation"><a href="#kafka-section" aria-controls="kafka-section" role="tab"
                                            data-toggle="tab">Kafka</a>
@@ -64,13 +67,21 @@
         <div class="jumbotron">
             <h1>RideOn</h1>
 
-            <p class="lead">A simulated real-time location-based reservation system for San Francisco yellow cabs</p>
+            <p class="lead">A telemetry monitoring system for a simulated real-time location-based reservation service for yellow cabs</p>
         </div>
 
         <!-- TAB PANES -->
         <div class="tab-content" id="tab">
 
-            <div id="map-section" class="tab-pane active" align="center" role="tabpanel">
+
+            <div id="slide-section" class="tab-pane active" align="center" role="tabpanel">
+                <div id="slide-container">
+                    <iframe src="https://www.slideshare.net/slideshow/embed_code/key/3nI1RlAWjv9mO5" width="476"
+                            height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                </div>
+            </div>
+
+            <div id="map-section" class="tab-pane" align="center" role="tabpanel">
                 <div id="map-container">
                     <div id="map-canvas"></div>
                 </div>
@@ -97,7 +108,7 @@
             <div id="grafana-section" class="tab-pane" align="center" role="tabpanel">
                 <div id="grafana-container">
                     <iframe id="grafana-canvas"
-                            src="http://ec2-52-8-205-103.us-west-1.compute.amazonaws.com:3000/dashboard/db/geoupdatebolt?panelId=15&fullscreen&edit">
+                            src="http://ec2-52-8-205-103.us-west-1.compute.amazonaws.com:3000/dashboard/db/geoupdatebolt">
                         <p>Your browser does not support iframes.</p>
                     </iframe>
                 </div>
@@ -108,7 +119,6 @@
 
 </div>
 
-</div>
 <!-- /container -->
 
 </body>
