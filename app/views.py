@@ -14,7 +14,8 @@ from app import app
 def index():
     return render_template('index.html')
 
-@app.route('/realtime/<user_lat>/<user_lon>')
+
+@app.route('/map/<user_lat>/<user_lon>')
 def realtime(user_lat, user_lon):
     ELASTIC_SEARCH_CLUSTER = [
         "http://52.8.145.247:9200/", "http://52.8.148.251:9200/", "http://52.8.158.130:9200/",
@@ -23,9 +24,6 @@ def realtime(user_lat, user_lon):
 
     es_client = pyelasticsearch.ElasticSearch(urls=ELASTIC_SEARCH_CLUSTER)
 
-    # hard-code for testing
-    # user_lat = 37.7577
-    # user_lon = -122.4376
     location = {
         "lat": user_lat,
         "lon": user_lon
@@ -34,21 +32,18 @@ def realtime(user_lat, user_lon):
     # construct query to find closest taxi
     query = {
         "from": 0,
-        "size": 10,
+        "size": 100,
         "query": {
             "match": {
                 "is_occupied": "0"
             }
         },
-        "sort": [
-            {
-                "_geo_distance": {
-                    "location": location,
-                    "order": "asc",
-                    "unit": "km"
-                }
+        "filter": {
+            "geo_distance": {
+                "distance": "1km",
+                "location": location
             }
-        ]
+        }
     }
 
     print "executing search query"
@@ -56,9 +51,8 @@ def realtime(user_lat, user_lon):
     hits = res['hits']['hits']
     hits_len = len(hits)
 
-    print json.dumps(hits)
-
-    print type(hits)
+    print "found %s hits" % hits_len
+    # print json.dumps(hits)
 
     cabs = []
 
@@ -68,5 +62,7 @@ def realtime(user_lat, user_lon):
         lat = source['location']['lat']
         lon = source['location']['lon']
         cabs.append({'name': taxi_id, 'lat': lat, 'lng': lon})
+
+    print json.dumps(cabs)
 
     return jsonify(cabs=cabs)

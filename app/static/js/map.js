@@ -34,7 +34,7 @@ function placeMarker(position) {
 }
 
 function update_values(position) {
-    $.getJSON('/realtime/' + position.A + '/' + position.F,
+    $.getJSON('/map/' + position.A + '/' + position.F,
         function (data) {
             cabs = data.cabs
             console.log(cabs)
