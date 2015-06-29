@@ -18,8 +18,10 @@ def index():
 @app.route('/map/<user_lat>/<user_lon>')
 def realtime(user_lat, user_lon):
     ELASTIC_SEARCH_CLUSTER = [
-        "http://52.8.145.247:9200/", "http://52.8.148.251:9200/", "http://52.8.158.130:9200/",
-        "http://52.8.162.105:9200/",
+        "http://52.8.209.213:9200/",
+        "http://52.8.209.72:9200/",
+        "http://52.8.185.120:9200/",
+        "http://52.8.55.191:9200/",
         "http://52.8.153.92:9200/"]
 
     es_client = pyelasticsearch.ElasticSearch(urls=ELASTIC_SEARCH_CLUSTER)
@@ -32,7 +34,7 @@ def realtime(user_lat, user_lon):
     # construct query to find closest taxi
     query = {
         "from": 0,
-        "size": 100,
+        "size": 10,
         "query": {
             "match": {
                 "is_occupied": "0"
@@ -40,7 +42,7 @@ def realtime(user_lat, user_lon):
         },
         "filter": {
             "geo_distance": {
-                "distance": "1km",
+                "distance": "2km",
                 "location": location
             }
         }
