@@ -1,8 +1,7 @@
 RideOn Website
 =================
 
-This is the front end for [RideOn](mydiemho/rideon), my big data project as part of [Insight Data Science's](http://insightdataengineering.com/) Engineering fellowship program from June 2015 through July 2015.
-	
+This is the front end for [RideOn](https://github.com/mydiemho/rideon), my big data project as part of [Insight Data Science's](http://insightdataengineering.com/) Engineering fellowship program from June 2015 through July 2015.
 	
 ## Dependencies
 Instructions are specific to Debian/Ubuntu.
